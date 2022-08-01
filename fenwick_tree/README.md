@@ -1,0 +1,2 @@
+# Fenwick Tree
+[Fenwick Tree](https://en.wikipedia.org/wiki/Fenwick_tree) or binary indexed tree is a data structure that can calculate prefix sums in an array of N and update efficiently. The most popular usage of this data structure is in computer vision where we need to find the pixel intensities such as in Viola-Jones face detection algorithm with [Haar-features](https://en.wikipedia.org/wiki/Haar-like_feature)
