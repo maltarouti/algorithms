@@ -35,7 +35,7 @@ class LRUCache:
 
         return string
 
-    def add(self, node: Node) -> None:
+    def __add(self, node: Node) -> None:
         node.next_node = self.linkedlist.head
         node.previous_node = None
 
@@ -49,11 +49,11 @@ class LRUCache:
 
         self.cache[node.node_id] = node
 
-    def pop(self) -> None:
+    def __pop(self) -> None:
         self.linkedlist.tail = self.linkedlist.tail.previous_node
         self.linkedlist.tail.next_node = None
 
-    def update(self, node: Node) -> None:
+    def __update(self, node: Node) -> None:
         previous_node = node.previous_node
         next_node = node.next_node
 
@@ -66,12 +66,12 @@ class LRUCache:
             next_node.previous_node = previous_node
         else:
             self.linkedlist.tail = previous_node
-        self.add(node)
+        self.__add(node)
 
     def get(self, node_id: int) -> Node | None:
         if node_id in self.cache:
             node = self.cache.get(node_id)
-            self.update(node)
+            self.__update(node)
             return node
         return None
 
@@ -79,14 +79,14 @@ class LRUCache:
         if node_id in self.cache:
             node = self.cache[node_id]
             node.data = data
-            self.update(node)
+            self.__update(node)
         else:
             node = Node(node_id, data)
             if self.size < self.CAPACITY:
                 self.size += 1
             else:
-                self.pop()
-            self.add(node)
+                self.__pop()
+            self.__add(node)
 
 
 if __name__ == "__main__":
