@@ -18,6 +18,22 @@ class Trie:
     def __init__(self) -> None:
         self.root = Node("*")
 
+    def __collect(self, node: Node,
+                  prefix: str,
+                  words: list[str]):
+        if node is None:
+            return
+
+        if node.is_leaf:
+            words.append(prefix)
+
+        for child in node.children:
+            if not child:
+                continue
+
+            child_character = child.character
+            self.__collect(child, prefix+child_character, words)
+
     def insert(self, key: str, value: T) -> None:
         current = self.root
 
@@ -68,24 +84,8 @@ class Trie:
 
             node = node.children[ascii_index]
 
-        self.collect(node, prefix, words)
+        self.__collect(node, prefix, words)
         return words
-
-    def collect(self, node: Node,
-                prefix: str,
-                words: list[str]):
-        if node is None:
-            return
-
-        if node.is_leaf:
-            words.append(prefix)
-
-        for child in node.children:
-            if not child:
-                continue
-
-            child_character = child.character
-            self.collect(child, prefix+child_character, words)
 
 
 if __name__ == "__main__":
