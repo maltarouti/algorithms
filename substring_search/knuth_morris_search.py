@@ -23,7 +23,7 @@ def construct_pi(pattern: str) -> list:
 
 def search(text: str, pattern: str) -> None:
     i, j = 0, 0
-    pi_table = construct_pi("aafabaafab")
+    pi_table = construct_pi(pattern)
 
     while i < len(text) and j < len(pattern):
         if text[i] == pattern[j]:
