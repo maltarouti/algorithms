@@ -3,7 +3,7 @@ from typing import TypeVar
 
 
 T = TypeVar("T")
-ALPHABET_SIZE: int = 26
+ALPHABET_SIZE: int = 128
 
 
 class Node:
@@ -22,7 +22,7 @@ class Trie:
         current = self.root
 
         for letter in key:
-            ascii_index = ord(letter) - ord('a')
+            ascii_index = ord(letter)
 
             if current.children[ascii_index] is not None:
                 current = current.children[ascii_index]
@@ -42,7 +42,7 @@ class Trie:
         current = self.root
 
         for letter in key:
-            ascii_index = ord(letter) - ord('a')
+            ascii_index = ord(letter)
 
             if current.children[ascii_index]:
                 current = current.children[ascii_index]
@@ -61,7 +61,7 @@ class Trie:
         node = self.root
 
         for letter in prefix:
-            ascii_index = ord(letter) - ord('a')
+            ascii_index = ord(letter)
 
             if node.children[ascii_index] is None:
                 return None
