@@ -34,7 +34,7 @@ def search(text: str, pattern: str) -> None:
             print("Pattern found at index {}".format(i-j))
             j = pi_table[j - 1]
 
-        elif i < len(text) and text[i] != pattern[j]:
+        if i < len(text) and text[i] != pattern[j]:
             if j != 0:
                 j = pi_table[j-1]
             else:
