@@ -8,7 +8,7 @@ class Vertex:
     def __init__(self, data: T) -> None:
         self.data = data
         self.is_visited = False
-        self.neighbors = []
+        self.neighbors: list[Vertex] = []
 
     def add_neighbor(self, vertex: Vertex) -> None:
         self.neighbors.append(vertex)
@@ -35,7 +35,7 @@ class TopologicalOrdering:
             if not vertex.is_visited:
                 ordering.dfs(vertex)
 
-    def get_ordering(self, reverse=False) -> list[T]:
+    def get_ordering(self, reverse=False) -> list[Vertex]:
         if reverse:
             return self.stack[::-1]
         return self.stack
