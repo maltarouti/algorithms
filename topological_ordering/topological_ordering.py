@@ -33,7 +33,7 @@ class TopologicalOrdering:
     def order_vertices(self, graph: list[Vertex]) -> None:
         for vertex in graph:
             if not vertex.is_visited:
-                ordering.dfs(vertex)
+                self.dfs(vertex)
 
     def get_ordering(self, reverse=False) -> list[Vertex]:
         if reverse:
